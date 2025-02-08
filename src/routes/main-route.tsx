@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AuthGuard from "../AuthGuard";
 import App from "../App";
+import ReleaseOrder from "../pages/release-order/ReleaseOrder";
 
 export enum RoutesList {
   HOME = "/",
@@ -17,7 +18,7 @@ const appRouter = createBrowserRouter([
         path: RoutesList.HOME,
         element: (
           <AuthGuard>
-            <div>Hello</div>
+            <ReleaseOrder />
           </AuthGuard>
         ),
       },
