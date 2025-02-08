@@ -9,9 +9,9 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="brand-logo">
+      {/* <div className="brand-logo">
         <img src={BrandLogo} alt="brand-logo" className="brand-logo-img" />
-      </div>
+      </div> */}
       <div className="brand-name">Paper Agency</div>
       <div
         className="auth-logo"
@@ -21,10 +21,10 @@ const Header = () => {
         <FontAwesomeIcon icon={faUser} className="auth-logo-icon" />
         {isDropdownVisible && (
           <div className="dropdown">
-            <div className="option">
+            {/* <div className="option">
               <div className="dropdown-item">My Profile</div>
               <FontAwesomeIcon icon={faUser} className="action-icon" />
-            </div>
+            </div> */}
             <div className="option">
               <div className="dropdown-item">Logout</div>
               <FontAwesomeIcon icon={faSignOut} className="action-icon" />
