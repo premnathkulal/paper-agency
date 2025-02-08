@@ -1,0 +1,77 @@
+@use "../../styles/variables" as var;
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: var.$primary-color;
+  color: var.$white;
+
+  .menu-icon {
+    padding-right: 1rem;
+    font-size: 1.2rem;
+    display: none;
+  }
+
+  .auth-logo {
+    cursor: pointer;
+    .dropdown {
+      position: absolute;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      right: 10px;
+      background: var.$white;
+      // padding: 0.8rem;
+      box-shadow: var.$card-shadow;
+      border-radius: 2px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      z-index: 1002;
+      min-width: 14rem;
+
+      .option {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .dropdown-item {
+          padding: 0.8rem;
+          color: var.$primary-color;
+        }
+
+        .action-icon {
+          color: var.$primary-color;
+          margin-left: auto;
+          padding-right: 0.8rem;
+        }
+
+        &:hover {
+          background: var.$background-color;
+        }
+      }
+    }
+  }
+
+  .brand-logo-img {
+    width: 2rem;
+    cursor: pointer;
+  }
+
+  .auth-logo-icon {
+    font-size: 1.5rem;
+  }
+
+  .brand-name {
+    font-size: 1.2rem;
+    font-weight: 800;
+    flex: 1;
+  }
+}
+
+@media (max-width: 950px) {
+  .menu-icon {
+    display: block !important;
+  }
+}

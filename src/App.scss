@@ -1,0 +1,21 @@
+@use "./styles/button";
+
+#root {
+  width: 100%;
+  text-align: center;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  width: 100%;
+
+  .app-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
