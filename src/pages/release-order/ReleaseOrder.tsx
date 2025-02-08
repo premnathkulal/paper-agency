@@ -1,20 +1,70 @@
 import InputBox, { InputTypes } from "../../components/input-box/InputBox";
 import { useState } from "react";
 import "./ReleaseOrder.scss";
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 
 const ReleaseOrder = () => {
-  const [publicationPlace, setPublicationPlace] = useState("");
-  const [dateOfInsertion, setDateOfInsertion] = useState("");
-  const [size, setSize] = useState("");
-  const [position, setPosition] = useState("");
-  const [caption, setCaption] = useState("");
-  const [rate, setRate] = useState("");
-  const [specialInsertion, setSpecialInsertion] = useState("");
-  const [matterThrough, setMatterThrough] = useState("");
-  const [photoFileName, setPhotoFileName] = useState("");
+  const [publicationPlace, setPublicationPlace] = useState("a");
+  const [dateOfInsertion, setDateOfInsertion] = useState(null);
+  const [size, setSize] = useState("a");
+  const [position, setPosition] = useState("a");
+  const [caption, setCaption] = useState("a");
+  const [rate, setRate] = useState("a");
+  const [specialInsertion, setSpecialInsertion] = useState("a");
+  const [matterThrough, setMatterThrough] = useState("a");
+  const [photoFileName, setPhotoFileName] = useState("a");
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [showPdfPreview, setShowPdfPreview] = useState(false);
 
   const createReleaseOrderFile = () => {
-    console.log("Publication Place:", publicationPlace);
+    const doc = new jsPDF();
+
+    // Set header with custom font and style
+    doc.setFontSize(22);
+    doc.setTextColor(40, 40, 255); // Set color for the header
+    doc.text("Release Order - YADAV AGENCY", 20, 20); // Add the header
+
+    // Add a horizontal line under the header
+    doc.setDrawColor(0, 0, 0);
+    doc.setLineWidth(0.5);
+    doc.line(20, 25, 190, 25); // Line from left to right
+
+    // Set font for the content
+    doc.setFontSize(14);
+    doc.setTextColor(0, 0, 0); // Default text color (black)
+
+    // Add input data with some styling
+    doc.text(`Publication Place: ${publicationPlace}`, 20, 40);
+    doc.text(`Size: ${size}`, 20, 50);
+    doc.text(`Position: ${position}`, 20, 60);
+    doc.text(`Caption: ${caption}`, 20, 70);
+    doc.text(`Rate: ${rate}`, 20, 80);
+    doc.text(`Special Insertion: ${specialInsertion}`, 20, 90);
+    doc.text(`Matter Through: ${matterThrough}`, 20, 100);
+    doc.text(`Photo File Name: ${photoFileName}`, 20, 110);
+
+    // Create a Blob URL to preview the PDF
+    const pdfBlob = doc.output("blob");
+    const pdfUrl = URL.createObjectURL(pdfBlob);
+    setPdfUrl(pdfUrl);
+
+    setShowPdfPreview(true);
+  };
+
+  const savePDF = () => {
+    if (pdfUrl) {
+      const link = document.createElement("a");
+      link.href = pdfUrl;
+      link.download = "release-order.pdf";
+      link.click();
+      URL.revokeObjectURL(pdfUrl);
+      setPdfUrl(null);
+    }
+  };
+
+  const cancelPDF = () => {
+    setPdfUrl(null);
   };
 
   return (
@@ -31,15 +81,6 @@ const ReleaseOrder = () => {
             label="Publication Place"
             value={publicationPlace}
             setInputValue={setPublicationPlace}
-            isRequired
-          />
-          <InputBox
-            id="date-of-insertion"
-            name="date-of-insertion"
-            type={InputTypes.Date}
-            label="Date of Insertion"
-            value={dateOfInsertion}
-            setInputValue={setDateOfInsertion}
             isRequired
           />
           <InputBox
@@ -106,7 +147,7 @@ const ReleaseOrder = () => {
             isRequired
           />
           <button
-            type="submit"
+            type="button"
             className="btn"
             onClick={createReleaseOrderFile}
           >
@@ -115,47 +156,23 @@ const ReleaseOrder = () => {
         </div>
       </form>
       <div className="lottie-anim-container">YADAV AGENCY - RELEASE ORDER</div>
+      {showPdfPreview && pdfUrl && (
+        <div className="pdf-preview-modal">
+          <iframe
+            src={`https://docs.google.com/gview?embedded=true&url=${pdfUrl}`}
+            title="PDF Preview"
+            className="pdf-preview-iframe"
+          ></iframe>
+          <button className="btn" onClick={savePDF}>
+            Download PDF
+          </button>
+          <button className="btn" onClick={cancelPDF}>
+            Cancel
+          </button>
+        </div>
+      )}
     </div>
   );
 };
 
 export default ReleaseOrder;
-
-{
-  /* <div className="form-group">
-            <label htmlFor="publicationPlace">Publication & Place</label>
-            <input type="text" id="publicationPlace" name="publicationPlace" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="dateOfInsertion">Date of Insertion</label>
-            <input type="date" id="dateOfInsertion" name="dateOfInsertion" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="size">Size</label>
-            <input type="text" id="size" name="size" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="position">Position</label>
-            <input type="text" id="position" name="position" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="caption">Caption</label>
-            <input type="text" id="caption" name="caption" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="rate">Rate</label>
-            <input type="text" id="rate" name="rate" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="specialInsertion">Special Insertion</label>
-            <input type="text" id="specialInsertion" name="specialInsertion" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="matterThrough">Matter Through</label>
-            <input type="text" id="matterThrough" name="matterThrough" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="photoFileName">Photo File Name</label>
-            <input type="text" id="photoFileName" name="photoFileName" />
-          </div> */
-}
