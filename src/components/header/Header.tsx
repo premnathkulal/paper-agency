@@ -1,7 +1,6 @@
 import "./Header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
-import BrandLogo from "../../assets/react.svg";
 import { useState } from "react";
 
 const Header = () => {
