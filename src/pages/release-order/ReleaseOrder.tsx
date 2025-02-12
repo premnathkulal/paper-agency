@@ -73,10 +73,10 @@ const ReleaseOrder = () => {
             isRequired
           />
           <InputBox
-            id="date-of-insertion"
-            name="date-of-insertion"
+            id="publication-date"
+            name="publication-date"
             type={InputTypes.Date}
-            label="Publication Place"
+            label="Publication Date"
             value={dateOfInsertion}
             setInputValue={handleSetDateOfInsertion}
             isRequired

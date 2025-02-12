@@ -39,12 +39,21 @@
         .dropdown-item {
           padding: 0.8rem;
           color: var.$primary-color;
-        }
+          display: block;
+          width: 100%;
+          border: unset;
+          background: var.$white;
+          font-weight: bold;
+          font-size: 1.2rem;
+          display: flex;
+          justify-content: space-between;
+          cursor: pointer;
 
-        .action-icon {
-          color: var.$primary-color;
-          margin-left: auto;
-          padding-right: 0.8rem;
+          .action-icon {
+            color: var.$primary-color;
+            margin-left: auto;
+            padding-right: 0.8rem;
+          }
         }
 
         &:hover {

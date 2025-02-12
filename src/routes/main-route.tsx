@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AuthGuard from "../AuthGuard";
 import App from "../App";
 import ReleaseOrder from "../pages/release-order/ReleaseOrder";
+import Login from "../pages/login-page/Login";
 
 export enum RoutesList {
   HOME = "/",
@@ -21,6 +22,10 @@ const appRouter = createBrowserRouter([
             <ReleaseOrder />
           </AuthGuard>
         ),
+      },
+      {
+        path: RoutesList.LOGIN,
+        element: <Login />,
       },
     ],
   },

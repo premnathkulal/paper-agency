@@ -6,6 +6,11 @@ import { useState } from "react";
 const Header = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
+  const handleLogout = () => {
+    localStorage.removeItem("userInfo");
+    window.location.reload();
+  };
+
   return (
     <div className="header">
       {/* <div className="brand-logo">
@@ -25,8 +30,10 @@ const Header = () => {
               <FontAwesomeIcon icon={faUser} className="action-icon" />
             </div> */}
             <div className="option">
-              <div className="dropdown-item">Logout</div>
-              <FontAwesomeIcon icon={faSignOut} className="action-icon" />
+              <button className="dropdown-item" onClick={handleLogout}>
+                Logout
+                <FontAwesomeIcon icon={faSignOut} className="action-icon" />
+              </button>
             </div>
           </div>
         )}

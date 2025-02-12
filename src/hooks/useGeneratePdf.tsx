@@ -100,7 +100,7 @@ const useGeneratePdf = () => {
     const releaseOrderData = [
       ["Publication & Place", ":", publicationPlace],
       [
-        "Date of insertion",
+        "Date of Insertion",
         ":",
         formateDate(new Date(dateOfInsertion), DateFormats.DDMMYYYY),
       ],

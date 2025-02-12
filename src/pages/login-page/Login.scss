@@ -1,0 +1,71 @@
+@use "../../styles/variables" as var;
+
+.login-page {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: var.$secondary-color;
+
+  @media screen and (max-width: 768px) {
+    background-color: unset;
+  }
+
+  .login-container {
+    box-shadow: 0 4px 6px rgba(var.$black, 0.1);
+    background: var.$white;
+    border-radius: 5px;
+    min-width: 38rem;
+    padding: 2rem;
+
+    @media screen and (max-width: 768px) {
+      min-width: 100%;
+      box-shadow: unset;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+
+      .form-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+
+        .brand-logo {
+          width: 4rem;
+          height: 2rem;
+          margin-left: auto;
+        }
+
+        p {
+          padding: 0;
+          margin: 0;
+        }
+      }
+
+      .warn-message {
+        color: var.$red;
+        span {
+          padding-left: 0.4rem;
+        }
+      }
+    }
+  }
+
+  .error-warn {
+    border: 2px solid var.$red;
+    box-shadow: 0 -1px 39px rgba(var.$red, 0.8);
+
+    @media screen and (max-width: 768px) {
+      box-shadow: unset;
+      border: unset;
+    }
+  }
+}

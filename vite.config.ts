@@ -10,6 +10,7 @@ export default defineConfig({
         manualChunks(id) {
           if (id.includes("node_modules")) {
             if (id.includes("jspdf")) return "jspdf";
+            if (id.includes("lottie")) return "lottie-react";
             if (id.includes("react")) return "react-vendor";
             return "vendor"; // General vendor chunk
           }

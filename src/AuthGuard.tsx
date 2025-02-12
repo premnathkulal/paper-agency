@@ -8,7 +8,12 @@ interface AuthGuardProps {
 
 const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
   const navigate = useNavigate();
-  const isAuthenticated = true; // !!localStorage.getItem("authToken"); // Replace with your auth logic
+  const userInfo = localStorage.getItem("userInfo");
+
+  let isAuthenticated = false;
+  if (userInfo) {
+    isAuthenticated = JSON.parse(userInfo).isAuthenticated;
+  }
 
   useEffect(() => {
     if (!isAuthenticated) {
