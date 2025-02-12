@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import "./ReleaseOrder.scss";
 import useFormateDate, { DateFormats } from "../../hooks/useFormateDate";
 import useGeneratePdf from "../../hooks/useGeneratePdf";
+import Lottie from "lottie-react";
+import animationData from "../../assets/lottie/news-paper.json";
 
 const ReleaseOrder = () => {
   const [clientName, setClientName] = useState("");
@@ -151,7 +153,9 @@ const ReleaseOrder = () => {
           </button>
         </div>
       </form>
-      <div className="lottie-anim-container">YADAV AGENCY - RELEASE ORDER</div>
+      <div className="lottie-anim-container">
+        <Lottie animationData={animationData} loop={true} />
+      </div>
     </div>
   );
 };

@@ -199,8 +199,9 @@ const useGeneratePdf = () => {
     doc.addImage(logo, "PNG", 155, 252, 25, 18);
 
     // Download the PDF
-    const pdfOutput = doc.output("bloburl");
-    window.open(pdfOutput, "_blank");
+    // const pdfOutput = doc.output("bloburl");
+    // window.open(pdfOutput, "_blank");
+    doc.save(`${clientName ? clientName + "-" : ""}release-order.pdf`);
   };
 
   return { generatePdf };
