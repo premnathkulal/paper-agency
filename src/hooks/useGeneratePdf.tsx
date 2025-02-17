@@ -1,6 +1,6 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import logo from "../assets/yadava-sign.jpeg"; // Adjust the path as necessary
+import yadavLogo from "../assets/yadava-sign.jpeg";
 import useFormateDate, { DateFormats } from "./useFormateDate";
 
 interface PdfData {
@@ -15,6 +15,17 @@ interface PdfData {
   matterThrough: string;
   photoFileName: string;
 }
+
+const userData = {
+  userName: "yadav",
+  agentName: "Yadav Agency",
+  agencyTitle: "YADAV AGENCY",
+  agencyPhone: "9844276869",
+  agencyAddress: "Opp. Mini Vidhana Sowda\nB.C.Road - 574219",
+  agencyEmail: "yadavvkbantwal@gmail.com",
+  RONo: "362",
+  toAddress: "The Advt.Manager\nVijaya Karnataka, Mangalore",
+};
 
 const useGeneratePdf = () => {
   const { formateDate } = useFormateDate();
@@ -40,19 +51,19 @@ const useGeneratePdf = () => {
     // Set header with custom font and style
     doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
-    doc.text("YADAV AGENCY", 14.2, 20);
+    doc.text(userData.agencyTitle, 14.2, 20);
     doc.setFont("helvetica", "normal");
 
     doc.setFontSize(13);
-    doc.text("Ph: 9844276869", 163.5, 20);
+    doc.text(`Ph: ${userData.agencyPhone}`, 163.5, 20);
 
     doc.setFontSize(10);
-    doc.text("Opp. Mini Vidhana Sowda\nB.C.Road - 574219", 14.2, 26, {
+    doc.text(userData.agencyAddress, 14.2, 26, {
       lineHeightFactor: 1.4,
     });
 
     doc.setFontSize(11);
-    doc.text("Email: yadavvkbantwal@gmail.com", 136, 26);
+    doc.text(`Email: ${userData.agencyEmail}`, 136, 26);
 
     // Center the header and add border
     doc.setFontSize(18);
@@ -75,11 +86,11 @@ const useGeneratePdf = () => {
     doc.setTextColor(0, 0, 0);
 
     doc.setFontSize(12);
-    doc.text("The Advt.Manager\nVijaya Karnataka, Mangalore", 14.2, 61, {
+    doc.text(userData.toAddress, 14.2, 61, {
       lineHeightFactor: 1.6,
     });
 
-    doc.text("R.O.No :   362", 152, 61);
+    doc.text(`R.O.No :   ${userData.RONo}`, 152, 61);
     doc.text(`Date     :   ${date}`, 152, 68);
     doc.text(`Client Name :  ${clientName}`, 14.2, 80);
 
@@ -172,7 +183,7 @@ const useGeneratePdf = () => {
     doc.setFontSize(12);
     const signatureText1 = "Yours faithfully,";
     const signatureText2 = "For ";
-    const signatureText3 = "Yadav Agency";
+    const signatureText3 = userData.agentName;
     const signatureMaxWidth = 170;
 
     const splitSignatureText1 = doc.splitTextToSize(
@@ -196,12 +207,16 @@ const useGeneratePdf = () => {
     doc.rect(10, 10, 190, 277);
 
     // Add an image
-    doc.addImage(logo, "PNG", 155, 252, 25, 18);
+    const img = new Image();
+    img.src = yadavLogo;
+    img.onload = function () {
+      doc.addImage(img, "JPEG", 155, 252, 25, 18);
+      doc.save(`${clientName ? clientName + "-" : ""}release-order.pdf`);
+    };
 
     // Download the PDF
     // const pdfOutput = doc.output("bloburl");
     // window.open(pdfOutput, "_blank");
-    doc.save(`${clientName ? clientName + "-" : ""}release-order.pdf`);
   };
 
   return { generatePdf };

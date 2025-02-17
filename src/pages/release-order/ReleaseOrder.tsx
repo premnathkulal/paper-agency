@@ -6,6 +6,68 @@ import useGeneratePdf from "../../hooks/useGeneratePdf";
 import Lottie from "lottie-react";
 import animationData from "../../assets/lottie/news-paper.json";
 
+const userData = {
+  agencyTitle: "YADAV AGENCY",
+  publicationPlace: [
+    {
+      id: "1",
+      title: "Above the Fold",
+    },
+    {
+      id: "2",
+      title: "Below the Fold",
+    },
+    {
+      id: "3",
+      title: "Front Page",
+    },
+    {
+      id: "4",
+      title: "Middle Page",
+    },
+    {
+      id: "5",
+      title: "Back Page",
+    },
+  ],
+  size: [
+    {
+      id: "1",
+      title: "1x1",
+    },
+    {
+      id: "2",
+      title: "1x2",
+    },
+    {
+      id: "3",
+      title: "2x2",
+    },
+    {
+      id: "4",
+      title: "2x3",
+    },
+    {
+      id: "5",
+      title: "3x3",
+    },
+  ],
+  position: [
+    {
+      id: "1",
+      title: "Top",
+    },
+    {
+      id: "2",
+      title: "Middle",
+    },
+    {
+      id: "3",
+      title: "Bottom",
+    },
+  ],
+};
+
 const ReleaseOrder = () => {
   const [clientName, setClientName] = useState("");
   const [publicationPlace, setPublicationPlace] = useState("");
@@ -51,7 +113,7 @@ const ReleaseOrder = () => {
     <div className="simple-create-form">
       <form className="form-container">
         <div className="form-title">
-          <h2>YADAV AGENCY - RELEASE ORDER</h2>
+          <h2>{userData.agencyTitle} - RELEASE ORDER</h2>
         </div>
         <div className="form-items">
           <InputBox
@@ -66,10 +128,11 @@ const ReleaseOrder = () => {
           <InputBox
             id="publication-place"
             name="publication-place"
-            type={InputTypes.Text}
+            type={InputTypes.DropDown}
             label="Publication Place"
             value={publicationPlace}
             setInputValue={setPublicationPlace}
+            options={userData.publicationPlace}
             isRequired
           />
           <InputBox
@@ -84,19 +147,21 @@ const ReleaseOrder = () => {
           <InputBox
             id="size"
             name="size"
-            type={InputTypes.Text}
+            type={InputTypes.DropDown}
             label="Size"
             value={size}
             setInputValue={setSize}
+            options={userData.size}
             isRequired
           />
           <InputBox
             id="position"
             name="position"
-            type={InputTypes.Text}
+            type={InputTypes.DropDown}
             label="Position"
             value={position}
             setInputValue={setPosition}
+            options={userData.position}
             isRequired
           />
           <InputBox
