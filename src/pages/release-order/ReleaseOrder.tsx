@@ -79,6 +79,7 @@ const ReleaseOrder = () => {
   const [specialInsertion, setSpecialInsertion] = useState("");
   const [matterThrough, setMatterThrough] = useState("");
   const [photoFileName, setPhotoFileName] = useState("");
+  const [releaseOrderNumber, setReleaseOrderNumber] = useState("");
   const { formateDate } = useFormateDate();
   const { generatePdf } = useGeneratePdf();
 
@@ -90,6 +91,7 @@ const ReleaseOrder = () => {
 
   const handleCreateReleaseOrderFile = () => {
     const data = {
+      releaseOrderNumber,
       clientName,
       publicationPlace,
       dateOfInsertion,
@@ -116,6 +118,15 @@ const ReleaseOrder = () => {
           <h2>{userData.agencyTitle} - RELEASE ORDER</h2>
         </div>
         <div className="form-items">
+          <InputBox
+            id="release-order-number"
+            name="release-order-number"
+            type={InputTypes.Number}
+            label="Release Order Number"
+            value={releaseOrderNumber}
+            setInputValue={setReleaseOrderNumber}
+            isRequired
+          />
           <InputBox
             id="client-name"
             name="client-name"

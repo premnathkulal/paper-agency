@@ -4,6 +4,7 @@ import yadavLogo from "../assets/yadava-sign.jpeg";
 import useFormateDate, { DateFormats } from "./useFormateDate";
 
 interface PdfData {
+  releaseOrderNumber: string;
   clientName: string;
   publicationPlace: string;
   dateOfInsertion: string;
@@ -23,7 +24,6 @@ const userData = {
   agencyPhone: "9844276869",
   agencyAddress: "Opp. Mini Vidhana Sowda\nB.C.Road - 574219",
   agencyEmail: "yadavvkbantwal@gmail.com",
-  RONo: "362",
   toAddress: "The Advt.Manager\nVijaya Karnataka, Mangalore",
 };
 
@@ -32,6 +32,7 @@ const useGeneratePdf = () => {
 
   const generatePdf = (data: PdfData) => {
     const {
+      releaseOrderNumber,
       clientName,
       publicationPlace,
       dateOfInsertion,
@@ -90,7 +91,7 @@ const useGeneratePdf = () => {
       lineHeightFactor: 1.6,
     });
 
-    doc.text(`R.O.No :   ${userData.RONo}`, 152, 61);
+    doc.text(`R.O.No :   ${releaseOrderNumber}`, 152, 61);
     doc.text(`Date     :   ${date}`, 152, 68);
     doc.text(`Client Name :  ${clientName}`, 14.2, 80);
 
