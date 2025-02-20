@@ -128,11 +128,10 @@ const ReleaseOrder = () => {
           <InputBox
             id="publication-place"
             name="publication-place"
-            type={InputTypes.DropDown}
+            type={InputTypes.Text}
             label="Publication Place"
             value={publicationPlace}
             setInputValue={setPublicationPlace}
-            options={userData.publicationPlace}
             isRequired
           />
           <InputBox
@@ -147,21 +146,19 @@ const ReleaseOrder = () => {
           <InputBox
             id="size"
             name="size"
-            type={InputTypes.DropDown}
+            type={InputTypes.Text}
             label="Size"
             value={size}
             setInputValue={setSize}
-            options={userData.size}
             isRequired
           />
           <InputBox
             id="position"
             name="position"
-            type={InputTypes.DropDown}
+            type={InputTypes.Text}
             label="Position"
             value={position}
             setInputValue={setPosition}
-            options={userData.position}
             isRequired
           />
           <InputBox
