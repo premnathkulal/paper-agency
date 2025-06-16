@@ -50,6 +50,10 @@
     }
   }
 
+  .form-container-right {
+    border: unset;
+  }
+
   @media screen and (max-width: 768px) {
     flex-direction: column;
 

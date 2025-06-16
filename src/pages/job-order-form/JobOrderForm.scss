@@ -1,0 +1,21 @@
+@use "../../styles/_simple_form";
+@use "../../styles/variables" as var;
+
+.radio-box-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.form-title-right {
+  margin-bottom: -2rem !important;
+}
+
+.job-type-form {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.form-container {
+  padding-top: 1rem !important;
+}

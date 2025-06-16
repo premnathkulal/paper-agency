@@ -1,0 +1,52 @@
+@use "../../styles/variables" as var;
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .checkbox-input {
+      display: none;
+    }
+
+    .checkbox-custom {
+      width: 20px;
+      height: 20px;
+      background-color: var.$white;
+      border: 2px solid var.$gray;
+      border-radius: 2px;
+      position: relative;
+      transition: all 0.3s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 10px;
+        border: solid var.$white;
+        border-width: 0 2px 2px 0;
+        top: 2px;
+        left: 5px;
+        transform: rotate(45deg);
+        transition: all 0.3s ease;
+      }
+    }
+
+    .checkbox-input:checked + .checkbox-custom {
+      background-color: var.$primary-color;
+      border-color: var.$primary-color;
+    }
+
+    .label-text {
+      margin-left: 0.6rem;
+      font-size: 1.2rem;
+      color: var.$primary-color;
+      user-select: none;
+    }
+  }
+}
