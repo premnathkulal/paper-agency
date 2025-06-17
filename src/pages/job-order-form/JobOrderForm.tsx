@@ -2,7 +2,7 @@ import "./JobOrderForm.scss";
 import InputBox, { InputTypes } from "../../components/input-box/InputBox";
 import { useState } from "react";
 import RadioBox from "../../components/radio-box/RadioBox";
-import useGeneratePdf from "../../hooks/useGeneratePdf";
+import useGenerateJobOrderPdf from "../../hooks/useGenerateJobOrderPdf";
 
 const JobOrderForm = () => {
   const [jobOrderNumber, setJobOrderNumber] = useState("");
@@ -26,7 +26,7 @@ const JobOrderForm = () => {
   const [sealType, setSealType] = useState("");
   const [frameSize, setFrameSize] = useState("");
   const [frameType, setFrameType] = useState("");
-  const { generatePdf } = useGeneratePdf();
+  const { generatePdf } = useGenerateJobOrderPdf();
 
   const handleCreateReleaseOrderFile = () => {
     const data = {
@@ -51,9 +51,8 @@ const JobOrderForm = () => {
       sealType,
       frameSize,
       frameType,
-      agencyTitle: "YADAV AGENCY",
     };
-    // generatePdf(data);
+    generatePdf(data);
   };
 
   return (
@@ -118,15 +117,6 @@ const JobOrderForm = () => {
             isRequired
           />
           <InputBox
-            id="paper-type"
-            name="paper-type"
-            type={InputTypes.Text}
-            label="Paper Type"
-            value={paperType}
-            setInputValue={setPaperType}
-            isRequired
-          />
-          <InputBox
             id="delivery-date"
             name="delivery-date"
             type={InputTypes.Date}
@@ -142,6 +132,15 @@ const JobOrderForm = () => {
             label="Delivery Time"
             value={deliveryTime}
             setInputValue={setDeliveryTime}
+            isRequired
+          />
+          <InputBox
+            id="paper-type"
+            name="paper-type"
+            type={InputTypes.Text}
+            label="Paper Type"
+            value={paperType}
+            setInputValue={setPaperType}
             isRequired
           />
         </div>

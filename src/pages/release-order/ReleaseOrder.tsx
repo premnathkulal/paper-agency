@@ -2,7 +2,7 @@ import InputBox, { InputTypes } from "../../components/input-box/InputBox";
 import { useEffect, useState } from "react";
 import "./ReleaseOrder.scss";
 import useFormateDate, { DateFormats } from "../../hooks/useFormateDate";
-import useGeneratePdf from "../../hooks/useGeneratePdf";
+import useGenerateReleaseOrderPdf from "../../hooks/useGenerateReleaseOrderPdf";
 import Lottie from "lottie-react";
 import animationData from "../../assets/lottie/news-paper.json";
 
@@ -81,7 +81,7 @@ const ReleaseOrder = () => {
   const [photoFileName, setPhotoFileName] = useState("");
   const [releaseOrderNumber, setReleaseOrderNumber] = useState("");
   const { formateDate } = useFormateDate();
-  const { generatePdf } = useGeneratePdf();
+  const { generatePdf } = useGenerateReleaseOrderPdf();
 
   const handleSetDateOfInsertion = (value: string) => {
     const date = new Date(value);

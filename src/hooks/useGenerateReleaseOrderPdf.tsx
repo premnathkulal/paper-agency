@@ -27,7 +27,7 @@ const userData = {
   toAddress: "The Advt.Manager\nVijaya Karnataka, Mangalore",
 };
 
-const useGeneratePdf = () => {
+const useGenerateReleaseOrderPdf = () => {
   const { formateDate } = useFormateDate();
 
   const generatePdf = (data: PdfData) => {
@@ -223,4 +223,4 @@ const useGeneratePdf = () => {
   return { generatePdf };
 };
 
-export default useGeneratePdf;
+export default useGenerateReleaseOrderPdf;
