@@ -350,7 +350,7 @@ const JobOrderForm = () => {
           <InputBox
             id="design-time"
             name="design-time"
-            type={InputTypes.Number}
+            type={InputTypes.Text}
             label="Design Time"
             value={designTime}
             setInputValue={setDesignTime}

@@ -109,7 +109,13 @@ const useGenerateJobOrderPdf = () => {
     doc.line(13, 80, doc.internal.pageSize.getWidth() - 13, 80);
 
     doc.text(`Paper Type           :  ${paperType}`, 13, 90);
-    doc.text(`Printing Type        :  ${printingType}`, 13, 98);
+    doc.text(
+      `Printing Type        :  ${printingType
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase())}`,
+      13,
+      98
+    );
     doc.text(`Printing Quantity   :  ${printingQuantity}`, 13, 106);
 
     // doc.setDrawColor(0, 0, 0);
